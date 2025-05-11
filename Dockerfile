@@ -16,7 +16,10 @@ RUN pip install -r requirements.txt
 # Copier le code source
 COPY . /app/
 
+CMD ["sh", "-c", "python manage.py migrate && gunicorn MarketGo.wsgi:application --bind 0.0.0.0:8000"]
+#ancer les migrations de la base de données avant de démarrer le serveur.
+CMD ["sh", "-c", "python manage.py migrate && gunicorn MarketGo.wsgi:application --bind 0.0.0.0:8000"]
+
+
 # Démarrer le serveur Django
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-#Vérifier la présence de manage.py
-RUN ls -l /app/manage.py
+CMD ["gunicorn", "MarketGo.wsgi:application", "--bind", "0.0.0.0:8000"]
