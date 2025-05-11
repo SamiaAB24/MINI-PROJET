@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: marketgo              # 🔁 Nom du déploiement en minuscules, sans majuscule, ni espace
+  labels:
+    app: marketgo               # 🔁 Le label doit aussi respecter les mêmes règles
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: marketgo             # 🔁 Correspondance du label
+  template:
+    metadata:
+      labels:
+        app: marketgo           # 🔁 Idem ici
+    spec:
+      containers:
+      - name: marketgo-container    # 🔁 Nom du conteneur en minuscules, sans espace ni majuscule
+        image: samia222/miniprojet_marketgo:latest
+        ports:
+        - containerPort: 8080

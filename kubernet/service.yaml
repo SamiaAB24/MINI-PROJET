@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: marketgo-service             # 🔁 Nom du service (tu peux le garder ou personnaliser)
+spec:
+  selector:
+    app: marketgo                    # 🔁 Doit correspondre au label utilisé dans le Deployment (ok pour toi)
+  type: NodePort                     # Permet d’accéder à l’application depuis ton navigateur (localhost)
+  ports:
+    - protocol: TCP
+      port: 80                       # Port visible dans le cluster (externe pour les autres services)
+      targetPort: 8080              # 🔁 Le port exposé par ton conteneur (doit correspondre à containerPort)
+      nodePort: 30080               # 🔁 Port d'accès depuis ton navigateur : http://localhost:30080
