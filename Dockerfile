@@ -16,3 +16,7 @@ RUN pip install -r requirements.txt
 # Copier le code source
 COPY . /app/
 
+# Démarrer le serveur Django
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+#Vérifier la présence de manage.py
+RUN ls -l /app/manage.py
