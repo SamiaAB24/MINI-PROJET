@@ -18,4 +18,4 @@ spec:
       - name: marketgo-container    # 🔁 Nom du conteneur en minuscules, sans espace ni majuscule
         image: samia222/miniprojet_marketgo:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 8000

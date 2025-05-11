@@ -9,5 +9,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80                       # Port visible dans le cluster (externe pour les autres services)
-      targetPort: 8080              # 🔁 Le port exposé par ton conteneur (doit correspondre à containerPort)
+      targetPort: 8000              # 🔁 Le port exposé par ton conteneur (doit correspondre à containerPort)
       nodePort: 30080               # 🔁 Port d'accès depuis ton navigateur : http://localhost:30080
