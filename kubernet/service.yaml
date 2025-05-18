@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
     app: marketgo                    # 🔁 Doit correspondre au label utilisé dans le Deployment (ok pour toi)
-  type: NodePort                     # Permet d’accéder à l’application depuis ton navigateur (localhost)
+  type: NodePort                     # Permet d’accéder à l’application depuis ton navigateur (localhost)etÇa signifie que ton appli est bien exposée sur un port précis du noeud Minikube, mais pas sur 127.0.0.1.
   ports:
     - protocol: TCP
       port: 80                       # Port visible dans le cluster (externe pour les autres services)
