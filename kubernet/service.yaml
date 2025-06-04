@@ -8,6 +8,6 @@ spec:
   type: NodePort                     # Permet d’accéder à l’application depuis ton navigateur (localhost)etÇa signifie que ton appli est bien exposée sur un port précis du noeud Minikube, mais pas sur 127.0.0.1.
   ports:
     - protocol: TCP
-      port: 80                       # Port visible dans le cluster (externe pour les autres services)
+      port: 80                # Port visible dans le cluster (externe pour les autres services)
       targetPort: 8000              # 🔁 Le port exposé par ton conteneur (doit correspondre à containerPort)
       nodePort: 30080               # 🔁 Port d'accès depuis ton navigateur : http://localhost:30080

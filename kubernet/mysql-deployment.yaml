@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: default       # change si tu utilises un autre namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8.0
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: rootpassword
+        - name: MYSQL_DATABASE
+          value: marketgo_db
+        - name: MYSQL_USER
+          value: marketgo_user
+        - name: MYSQL_PASSWORD
+          value: marketgo_pass
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        emptyDir: {}   # Pour dev, stockage temporaire. En prod, utiliser PersistentVolumeClaim
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db                # IMPORTANT: ce nom doit correspondre à DATABASES['default']['HOST'] dans Django
+  namespace: default
+spec:
+  selector:
+    app: mysql
+  ports:
+  - protocol: TCP
+    port: 3306
+    targetPort: 3306
+  type: ClusterIP

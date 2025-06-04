@@ -19,3 +19,6 @@ spec:
         image: samia222/miniprojet_marketgo:latest
         ports:
         - containerPort: 8000
+        env:
+        - name: DJANGO_SETTINGS_MODULE
+          value: "core.settings"   # ← adapte ce chemin à ton projet Django si nécess

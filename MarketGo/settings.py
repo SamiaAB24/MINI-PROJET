@@ -31,7 +31,8 @@ SECRET_KEY = 'django-insecure-s(n2-67i+zk8po6hh#7xe0#eke9rbb*(#mq*!q_u2n%9_-$nqd
 DEBUG = True
 LOGIN_URL= "core:login"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'marketgo.local']
+
 
 
 # Application definition
