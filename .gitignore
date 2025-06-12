@@ -1,0 +1,22 @@
+# Fichiers sensibles
+django-secret.yaml               # Secret Kubernetes en clair (jamais à versionner)
+.env                             # Fichier d'environnement Django (si utilisé localement)
+secrets/                         # Dossier de stockage de secrets (en clair)
+
+# Sealed Secrets non ignorés volontairement (car chiffrés)
+# django-sealedsecret.yaml
+
+# Fichiers temporaires
+*.log                            # Fichiers de logs éventuels
+*.swp                            # Fichiers temporaires d'éditeurs (Vim, etc.)
+__pycache__/                     # Dossier Python compilé
+*.pyc                            # Fichiers Python compilés
+
+# Fichiers liés à l’environnement local
+.idea/                           # Dossier de configuration PyCharm ou VSCode
+.vscode/                         # Idem pour VSCode
+*.db                             # Bases SQLite locales (si jamais tu en utilises une)
+
+# Fichiers Kubernetes à ne pas versionner si générés temporairement
+*.bak.yaml
+django-secret.yaml
